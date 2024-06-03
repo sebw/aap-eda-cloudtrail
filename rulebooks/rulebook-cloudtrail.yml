@@ -9,6 +9,12 @@
         secret_key: "{{ secret_key }}"
 
   rules:
+    - name: Handle Red Hat Insights event
+      condition: event.payload is defined
+      action:
+       debug:
+         msg: ">>> Received event! {{ event.payload }}"
+
     - name: Remove instances with not approved images (Ubuntu)
       condition: event.CloudTrailEvent.requestParameters.instancesSet.items[0].imageId == "ami-09e647bf7a368e505"
       action:
