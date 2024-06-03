@@ -9,7 +9,7 @@
         secret_key: "{{ secret_key }}"
 
   rules:
-    - name: Handle Red Hat Insights event
+    - name: Display payload
       condition: event.payload is defined
       action:
        debug:
